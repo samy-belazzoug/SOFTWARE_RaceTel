@@ -1,4 +1,4 @@
-# SOFTWARE_PyTel
+# PyTel : Car Telemetry Analysis tool
 
 ## When passions meets work
 IT and Motorsport are my passions, so why not combining them into one project?
@@ -18,16 +18,26 @@ At the moment I have no clue. It'll surely come later.
 
 This is the real business here, as I said, we will go from 
 **simracing** to **real life**, here are all the steps :
--**Assetto Corsa / Assetto Corsa Competizione** - Race cars application
--**BeamNG** -Road cars application
--**Assetto Corsa EVO** - Race cars application 
+
+-**Assetto Corsa / Assetto Corsa Competizione** - Racing application
+
+-**BeamNG** -Road application
+
+-**Assetto Corsa EVO** - Racing/Road application 
 *(when the game will be 1.0)* 
 
--**OBDII** - Road cars application
--**ECU** - Road cars application
+-**OBDII** - Road application
 
--**BeamNG** - Race cars application
+-**ECU** - Road application
+
+-**BeamNG** - Racing application
 *(when tire model will finally come out)*
--**RFactor2** - Race cars application
 
--**ECU EVO** - Race cars application
+-**RFactor2** - Racing application
+
+-**ECU EVO** - Racing application
+
+-**IRacing** - Racing application
+*(if I have enough money)*
+
+## Racing vs Road : what's the difference and why it matters?
