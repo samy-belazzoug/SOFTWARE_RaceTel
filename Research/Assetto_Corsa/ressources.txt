@@ -1,0 +1,12 @@
+https://www.assettocorsamods.net/threads/doc-shared-memory-reference.58/
+-->PDF to Assetto Corsa's shared memory.
+
+https://www.assettocorsa.net/forum/index.php?threads/shared-memory-for-python-applications-sim_info-py-for-ac-v0-22.11382/
+-->OFFICIAL DOCUMENTATION ON ASSETTO CORSA SHARED MEMORY YESS
+
+https://assettocorsamods.net/threads/getting-started-with-ac-app-developing.716/
+https://github.com/ckendell/ACAppTutorial/tree/master
+-->This is the business, basically, its how to start developing an app for AC
+
+https://github.com/rikby/ac-stubs?tab=readme-ov-file
+-->AC-STUBS, Get intellisence for ac lib
