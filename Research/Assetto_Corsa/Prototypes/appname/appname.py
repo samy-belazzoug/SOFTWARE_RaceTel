@@ -1,4 +1,23 @@
 import ac, acsys # Assetto Corsa imports
+import os,sys,platform #System imports
+
+try:
+    if platform.architecture()[0] == "64bit":
+        sysdir = "stdlib64"
+    else:
+        sysdir = "stdlib"
+    sys.path.insert(
+        len(sys.path), 'apps/python/appname/third_party')
+    os.environ['PATH'] += ";."
+    sys.path.insert(len(sys.path), os.path.join(
+        'apps/python/appname/third_party', sysdir))
+    os.environ['PATH'] += ";."
+except Exception as e:
+    ac.log("[ERROR] Error importing libraries: %s" % e)
+
+from third_party.sim_info import info
+
+print(info.graphics.tyreCompound, info.physics.rpms, info.static.playerNick)
 
 # LAPS
 l_lapcount = 0
@@ -15,7 +34,7 @@ rpm = 0
 # Fuel
 f_fuel = 0
 fuel = 0
-#maxfuel = sm.static.maxFuel
+maxfuel = info.static.maxFuel
 
 def acMain(ac_version):
     global l_lapcount,s_speed,r_rpm, f_fuel
@@ -50,7 +69,7 @@ def acUpdate(deltaT):
     current_lap = ac.getCarState(0, acsys.CS.LapCount)
     current_speed = ac.getCarState(0, acsys.CS.SpeedKMH)
     current_rpm = ac.getCarState(0, acsys.CS.RPM)
-    #current_fuel = sm.physics.fuel
+    current_fuel = info.physics.fuel
     
     # LAP UPDATE
     if current_lap > lapcount:
@@ -69,6 +88,6 @@ def acUpdate(deltaT):
         ac.setText(r_rpm, "RPM : {}".format(rpm))
     
     # FUEL UPDATE
-    """if current_fuel < maxfuel:
+    if current_fuel < maxfuel:
         fuel = current_fuel
-        ac.setText(r_rpm, "FUEL : {}/{}".format(fuel,maxfuel))"""
+        ac.setText(f_fuel, "FUEL : {}/{}".format(fuel,maxfuel))
