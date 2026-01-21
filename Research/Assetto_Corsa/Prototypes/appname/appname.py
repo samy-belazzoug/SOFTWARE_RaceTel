@@ -19,25 +19,29 @@ from third_party.sim_info import info
 
 print(info.graphics.tyreCompound, info.physics.rpms, info.static.playerNick)
 
+# PITLANE
+label_in_pitlane = 0
+in_pit = 0
+
 # LAPS
-l_lapcount = 0
+label_lapcount = 0
 lapcount = 0
 
 # SPEED
-s_speed = 0
+label_speed = 0
 speed = 0
 
 # RPMs
-r_rpm = 0
+label_rpm = 0
 rpm = 0
 
 # Fuel
-f_fuel = 0
+label_fuel = 0
 fuel = 0
 maxfuel = info.static.maxFuel
 
 def acMain(ac_version):
-    global l_lapcount,s_speed,r_rpm, f_fuel
+    global label_in_pitlane, in_pitlane, label_lapcount, label_speed, label_rpm, label_fuel
 
     #APP SETTINGS
     appWindow = ac.newApp("appName")
@@ -46,48 +50,60 @@ def acMain(ac_version):
     #APP CONSOLE
     ac.log("Hello, Assetto Corsa app World!")
     ac.console("Hello, Assetto Corsa console!")
-    ac.log("{} laps completed".format(lapcount))
 
     #APP LABELS
-    l_lapcount = ac.addLabel(appWindow,"Laps : 0")
-    s_speed = ac.addLabel(appWindow, "Speed : 0")
-    r_rpm = ac.addLabel(appWindow, "RPM : 0")
-    f_fuel = ac.addLabel(appWindow, "Fuel : 0/0")
-
+    label_in_pitlane = ac.addLabel(appWindow,"IN PIT")
+    label_lapcount = ac.addLabel(appWindow,"Laps : 0")
+    label_speed = ac.addLabel(appWindow, "Speed : 0")
+    label_rpm = ac.addLabel(appWindow, "RPM : 0")
+    label_fuel = ac.addLabel(appWindow, "Fuel : 0/0")
+    
     #Position of labels
-    ac.setPosition(l_lapcount,30,50)
-    ac.setPosition(s_speed,230,50)
-    ac.setPosition(r_rpm,430,50)
-    ac.setPosition(f_fuel,630,50)
+    ac.setPosition(label_in_pitlane,400,30)
+    ac.setPosition(label_lapcount,30,60)
+    ac.setPosition(label_speed,230,60)
+    ac.setPosition(label_rpm,430,60)
+    ac.setPosition(label_fuel,630,60)
     
     return "appName"
 
 def acUpdate(deltaT):
-    global l_lapcount,lapcount,s_speed,speed,r_rpm,rpm,f_fuel,fuel,maxfuel
+    global label_in_pitlane,in_pit, label_lapcount,lapcount,  label_speed,speed,  label_rpm,rpm,  label_fuel,fuel,maxfuel
 
     #We get current data from Assetto Corsa's data
+    current_pit = ac.isCarInPitlane(0)
     current_lap = ac.getCarState(0, acsys.CS.LapCount)
     current_speed = ac.getCarState(0, acsys.CS.SpeedKMH)
     current_rpm = ac.getCarState(0, acsys.CS.RPM)
     current_fuel = info.physics.fuel
-    
+
+    # PITLANE UPDATE
+    if current_pit == True:
+        in_pit = current_pit
+        ac.setText(label_in_pitlane,"IN PIT")
+        ac.setBackgroundColor(label_in_pitlane,255,255,0,0)
+
+    else:
+        in_pit = current_pit
+        ac.setText(label_in_pitlane,"OUT")
+
     # LAP UPDATE
     if current_lap > lapcount:
         lapcount = current_lap
-        ac.setText(l_lapcount, "Laps : {}".format(lapcount))
+        ac.setText(label_lapcount, "Laps : {}".format(lapcount))
         ac.console("Laps completed : {}".format(lapcount))
     
     # SPEED UPDATE
     if current_speed != speed:
         speed = int(current_speed)
-        ac.setText(s_speed, "Speed : {}".format(speed))
+        ac.setText(label_speed, "Speed : {}".format(speed))
     
     # RPM UPDATE
     if current_rpm != rpm:
         rpm = int(current_rpm)
-        ac.setText(r_rpm, "RPM : {}".format(rpm))
+        ac.setText(label_rpm, "RPM : {}".format(rpm))
     
     # FUEL UPDATE
     if current_fuel < maxfuel:
         fuel = current_fuel
-        ac.setText(f_fuel, "FUEL : {}/{}".format(fuel,maxfuel))
+        ac.setText(label_fuel, "FUEL : {:.2f}/{}".format(round(fuel,2),maxfuel))

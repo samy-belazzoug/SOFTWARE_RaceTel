@@ -10,3 +10,6 @@ https://github.com/ckendell/ACAppTutorial/tree/master
 
 https://github.com/rikby/ac-stubs?tab=readme-ov-file
 -->AC-STUBS, Get intellisence for ac lib
+
+https://github.com/dcratliff19/AC-SimInfo-Docs-Markdown#
+-->SIM_INFO.PY FOR ASSETTO CORSA
