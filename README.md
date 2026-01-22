@@ -3,28 +3,40 @@
 ## When passions meets work
 IT and Motorsport are my passions, so why not combining them into one project?
 
-## My ultimate project
-This project will come right after PyBank is finished. While PyBank V2 will be made in just 2 weeks,
-PyTel will take at least 1 year of development.
-
 ## From simracing to real life
-As major tools were mainly developped for real life, I will try to do the opposite, going from simracing to real life, but every versions will be natively properly working for every platform available.
+As major tools were mainly developped for real life, I will try to do the opposite, going from simracing to real life, so every versions will be natively properly working for every platform available.
 
 ## Tech stack
 
-At the moment I have no clue. It'll surely come later.
+Note : It can change in the future, but this is will be approximately :
+Back-end : Python, C++, C
+Front-end : ImGUI (C++), ImPlot + DirectX11 
+
+## My goals
+Of course, my goal is not to be a direct rival of MoTec I2, Cosworth PI and so on. 
+I don't even think can all alone. I just want to show my abilities in :
+
+-Reverse engineering
+
+- High frequency, data engineering.
+
+-Understanding of motorsport / cars
+
+-Software development
+
+-Real time programming
+
+-Performance engineering
+
+My professional dream would be to work in the Automotive industry, especialty Motorsport, whether it can be simulations or real life. So this project will be my "Automotive developer" portfolio.
 
 ## DEVELOPMENT PROCESS
-
 This is the real business here, as I said, we will go from 
 **simracing** to **real life**, here are all the steps :
 
--**Assetto Corsa / Assetto Corsa Competizione** - Racing application
+-**Assetto Corsa** - Racing application
 
 -**BeamNG** -Road application
-
--**Assetto Corsa EVO** - Racing/Road application 
-*(when the game will be 1.0)* 
 
 -**OBDII** - Road application
 
@@ -33,11 +45,6 @@ This is the real business here, as I said, we will go from
 -**BeamNG** - Racing application
 *(when tire model will finally come out)*
 
--**RFactor2** - Racing application
-
 -**ECU EVO** - Racing application
-
--**IRacing** - Racing application
-*(if I have enough money)*
 
 ## Racing vs Road : what's the difference and why it matters?
