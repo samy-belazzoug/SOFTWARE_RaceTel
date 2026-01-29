@@ -38,10 +38,36 @@ struct SPageFileStatic { //The following members are initialized when the instan
     float deprecated_2; // Do not use it
     int penaltiesEnabled = 0; // Cut penalties enabled: 1 (true) or 0 (false)
     float aidFuelRate = 0; // Fuel consumption rate: 0 (no cons), 1 (normal), 2 (double cons), etc.
+
+    float aidTireRate = 0; // Tire wear rate: 0 (no wear), 1 (normal), 2 (double wear) etc.
+    float aidMechanicalDamage = 0; // Damage rate: 0 (no damage) to 1 (normal)
+    int aidAllowTyreBlankets = 0; // Player starts with hot (optimal temp) tyres: 1 (true) or 0 (false)
+    float aidStability = 0; // Stability aid: 0 (no aid) to 1 (full aid)
+    int aidAutoClutch = 0; // If player's car has the "auto clutch" feature enabled : 0 or 1
+    int aidAutoBlip = 0; // If player's car has the "auto blip" feature enabled : 0 or 1
+    int hasDRS = 0; // If player's car has the "DRS" system: 0 or 1
+    int hasERS = 0; // If player's car has the "ERS" system: 0 or 1
+    int hasKERS = 0; //If player's car has the "KERS" system: 0 or 1
+    float kersMaxJ = 0; //Max KERS Joule value of the player's car
+    int engineBrakeSettingsCount = 0; // Count of possible engine brake settings of the player's car
+    int ersPowerControllerCount = 0; // Count of possible power controllers of the player's car
+    float trackSPlineLength = 0; //Length of the spline of the selected track
+    wchar_t trackConfiguration[33]; // Name of the track's layout (only multi-layout tracks)
+    float ersMaxJ = 0; // Max ERS Joule value of the player's car
+    int isTimedRace = 0; // 1 if the race is a timed one
+    int hasExtraLap = 0; // 1 if the timed race is set with an extra lap
+    wchar_t carSkin[33]; // Name of the used skin
+    int reversedGridPositions; // How many positions are going to be swapped in the second race
+    int PitWindowStart; // Pit window is open on Lap/Minute
+    int PitWindowEnd; // Pit window is closed on Lap/Minute
 };
 
-struct SPageFilePhysics;
+struct SPageFilePhysics {
 
-struct SPageFileGraphic;
+};
+
+struct SPageFileGraphic {};
+
+int connect();
 
 #endif
