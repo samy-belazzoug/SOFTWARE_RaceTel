@@ -66,25 +66,25 @@ struct SPageFileStatic { //The following members are initialized when the instan
     float deprecated_1; // Do not use it
     float deprecated_2; // Do not use it
     int32_t penaltiesEnabled; // Cut penalties enabled: 1 (true) or 0 (false)
-    float aidFuelRate = 0; // Fuel consumption rate: 0 (no cons), 1 (normal), 2 (double cons), etc.
+    float aidFuelRate; // Fuel consumption rate: 0 (no cons), 1 (normal), 2 (double cons), etc.
 
-    float aidTireRate = 0; // Tire wear rate: 0 (no wear), 1 (normal), 2 (double wear) etc.
-    float aidMechanicalDamage = 0; // Damage rate: 0 (no damage) to 1 (normal)
-    int32_t aidAllowTyreBlankets = 0; // Player starts with hot (optimal temp) tyres: 1 (true) or 0 (false)
-    float aidStability = 0; // Stability aid: 0 (no aid) to 1 (full aid)
-    int32_t aidAutoClutch = 0; // If player's car has the "auto clutch" feature enabled : 0 or 1
-    int32_t aidAutoBlip = 0; // If player's car has the "auto blip" feature enabled : 0 or 1
-    int32_t hasDRS = 0; // If player's car has the "DRS" system: 0 or 1
-    int32_t hasERS = 0; // If player's car has the "ERS" system: 0 or 1
-    int32_t hasKERS = 0; //If player's car has the "KERS" system: 0 or 1
-    float kersMaxJ = 0; //Max KERS Joule value of the player's car
-    int32_t engineBrakeSettingsCount = 0; // Count of possible engine brake settings of the player's car
-    int32_t ersPowerControllerCount = 0; // Count of possible power controllers of the player's car
-    float trackSPlineLength = 0; //Length of the spline of the selected track
+    float aidTireRate; // Tire wear rate: 0 (no wear), 1 (normal), 2 (double wear) etc.
+    float aidMechanicalDamage; // Damage rate: 0 (no damage) to 1 (normal)
+    int32_t aidAllowTyreBlankets; // Player starts with hot (optimal temp) tyres: 1 (true) or 0 (false)
+    float aidStability; // Stability aid: 0 (no aid) to 1 (full aid)
+    int32_t aidAutoClutch; // If player's car has the "auto clutch" feature enabled : 0 or 1
+    int32_t aidAutoBlip; // If player's car has the "auto blip" feature enabled : 0 or 1
+    int32_t hasDRS; // If player's car has the "DRS" system: 0 or 1
+    int32_t hasERS; // If player's car has the "ERS" system: 0 or 1
+    int32_t hasKERS; //If player's car has the "KERS" system: 0 or 1
+    float kersMaxJ; //Max KERS Joule value of the player's car
+    int32_t engineBrakeSettingsCount; // Count of possible engine brake settings of the player's car
+    int32_t ersPowerControllerCount; // Count of possible power controllers of the player's car
+    float trackSPlineLength; //Length of the spline of the selected track
     wchar_t trackConfiguration[33]; // Name of the track's layout (only multi-layout tracks)
-    float ersMaxJ = 0; // Max ERS Joule value of the player's car
-    int32_t isTimedRace = 0; // 1 if the race is a timed one
-    int32_t hasExtraLap = 0; // 1 if the timed race is set with an extra lap
+    float ersMaxJ; // Max ERS Joule value of the player's car
+    int32_t isTimedRace; // 1 if the race is a timed one
+    int32_t hasExtraLap; // 1 if the timed race is set with an extra lap
     wchar_t carSkin[33]; // Name of the used skin
     int32_t reversedGridPositions; // How many positions are going to be swapped in the second race
     int32_t PitWindowStart; // Pit window is open on Lap/Minute
@@ -92,14 +92,14 @@ struct SPageFileStatic { //The following members are initialized when the instan
 };
 
 struct SPageFilePhysics {
-    int32_t packetId = 0; // Index of the shared memory's current step
-    float gas = 0; // Value of gas pedal: 0 to 1 (fully pressed)
-    float brake = 0;  // Value of brake pedal: 0 to 1 (fully pressed) 
-    float fuel = 0;  // Liters of fuel in the car 
-    int32_t gear = 0;  // Selected gear (0 is reverse, 1 is neutral, 2 is first gear ) 
-    int32_t rpms = 0;  // Value of rpm 
-    float steerAngle = 0;  // Angle of steer 
-    float speedKmh = 0;  // Speed in Km/h 
+    int32_t packetId; // Index of the shared memory's current step
+    float gas; // Value of gas pedal: 0 to 1 (fully pressed)
+    float brake; // Value of brake pedal: 0 to 1 (fully pressed) 
+    float fuel; // Liters of fuel in the car 
+    int32_t gear;  // Selected gear (0 is reverse, 1 is neutral, 2 is first gear ) 
+    int32_t rpms;  // Value of rpm 
+    float steerAngle;  // Angle of steer 
+    float speedKmh;  // Speed in Km/h 
     float velocity[3]; // Velocity for each axis (world related) [x, y, z] 
     float accG[3]; // G-force for each axis (local related) [x, y, z] 
     float wheelSlip[4]; /* Spin speed of each tyre 
@@ -120,40 +120,40 @@ struct SPageFilePhysics {
     [Front Left, Front Right, Rear Left, Rear Right]*/ 
     float suspensionTravel[4]; /* Suspension travel for each tyre 
     [Front Left, Front Right, Rear Left, Rear Right]*/ 
-    float drs = 0; // If DRS is present and enabled: 0 (false) or 1 (true) 
-    float tc = 0; // Slip ratio limit for the traction control (if enabled) 
-    float heading = 0; // Heading of the car on world coordinates 
-    float pitch = 0; // Pitch of the car on world coordinates 
-    float roll = 0; // Roll of the car on world coordinates 
+    float drs; // If DRS is present and enabled: 0 (false) or 1 (true) 
+    float tc; // Slip ratio limit for the traction control (if enabled) 
+    float heading; // Heading of the car on world coordinates 
+    float pitch; // Pitch of the car on world coordinates 
+    float roll; // Roll of the car on world coordinates 
     float cgHeight; // Height of Center of Gravity 
     float carDamage[5]; // Level of damage for each car section (only first 4 are valid) 
-    int32_t numberOfTyresOut = 0; /* How many tyres are allowed to stay out of the track to not 
+    int32_t numberOfTyresOut; /* How many tyres are allowed to stay out of the track to not 
     receive a penalty*/
-    int32_t pitLimiterOn = 0; // If pit limiter is enabled: 0 (false) or 1 (true) 
-    float abs = 0; // Slip ratio limit for the ABS (if enabled) 
-    float kersCharge = 0; // KERS/ERS battery charge: 0 to 1 
-    float kersInput = 0; // KERS/ERS input to engine: 0 to 1 
-    int32_t autoShifterOn = 0; // If auto shifter is enabled: 0 (false) or 1 (true) 
+    int32_t pitLimiterOn; // If pit limiter is enabled: 0 (false) or 1 (true) 
+    float abs; // Slip ratio limit for the ABS (if enabled) 
+    float kersCharge; // KERS/ERS battery charge: 0 to 1 
+    float kersInput; // KERS/ERS input to engine: 0 to 1 
+    int32_t autoShifterOn; // If auto shifter is enabled: 0 (false) or 1 (true) 
     float rideHeight[2]; // Right heights: front and rear 
-    float turboBoost = 0; // Turbo boost 
-    float ballast = 0; // Kilograms of ballast added to the car (only in multiplayer) 
-    float airDensity = 0; // Air density 
-    float airTemp = 0; // Ambient temperature 
-    float roadTemp = 0; // Road temperature 
+    float turboBoost; // Turbo boost 
+    float ballast; // Kilograms of ballast added to the car (only in multiplayer) 
+    float airDensity; // Air density 
+    float airTemp; // Ambient temperature 
+    float roadTemp; // Road temperature 
     float localAngularVel[3]; // Angular velocity of the car [x, y, z] 
-    float finalFF = 0; // Current Force Feedback value; 
-    float performanceMeter = 0; // Performance meter compared to the best lap 
-    int32_t engineBrake = 0; // Engine brake setting 
-    int32_t ersRecoveryLevel = 0;  // ERS recovery level 
-    int32_t ersPowerLevel = 0;  // ERS selected power controller 
-    int32_t ersHeatCharging = 0;  // ERS changing: 0 (Motor) or 1 (Battery) 
-    int32_t ersIsCharging = 0; // If ERS battery is recharging: 0 (false) or 1 (true) 
-    float kersCurrentKJ = 0;  // KERS/ERS KiloJoule spent during the lap 
-    int32_t drsAvailable = 0;  // If DRS is available (DRS zone): 0 (false) or 1 (true) 
-    int32_t drsEnabled = 0;  // If DRS is enabled: 0 (false) or 1 (true) 
+    float finalFF; // Current Force Feedback value; 
+    float performanceMeter; // Performance meter compared to the best lap 
+    int32_t engineBrake; // Engine brake setting 
+    int32_t ersRecoveryLevel;  // ERS recovery level 
+    int32_t ersPowerLevel;  // ERS selected power controller 
+    int32_t ersHeatCharging;  // ERS changing: 0 (Motor) or 1 (Battery) 
+    int32_t ersIsCharging; // If ERS battery is recharging: 0 (false) or 1 (true) 
+    float kersCurrentKJ;  // KERS/ERS KiloJoule spent during the lap 
+    int32_t drsAvailable;  // If DRS is available (DRS zone): 0 (false) or 1 (true) 
+    int32_t drsEnabled;  // If DRS is enabled: 0 (false) or 1 (true) 
     float brakeTemp[4];  /* Brake temp for each tire 
     [Front Left, Front Right, Rear Left, Rear Right]*/
-    float clutch = 0;  // Value of clutch pedal: 0 to 1 (fully pressed) 
+    float clutch;  // Value of clutch pedal: 0 to 1 (fully pressed) 
     float tyreTempI[4];  /* Inner temperature of each tyre 
     [Front Left, Front Right, Rear Left, Rear Right]*/
     float tyreTempM[4]; /* Middle temperature of each tyre 
@@ -170,7 +170,7 @@ struct SPageFilePhysics {
 };
 
 struct SPageFileGraphic {
-    int32_t packetId = 0; //Index of the shared memory's current step 
+    int32_t packetId; //Index of the shared memory's current step 
     AC_STATUS status = AC_OFF; 
     /*  Status of the instance: 
         AC_OFF 0 
@@ -195,23 +195,23 @@ struct SPageFileGraphic {
     wchar_t lastTime[15]; // Last lap time 
     wchar_t bestTime[15]; // Best lap time 
     wchar_t split[15]; // Time in sector 
-    int32_t completedLaps = 0; // Number of completed laps by the player 
-    int32_t position = 0; // Current player position (standings) 
-    int32_t iCurrentTime = 0; // Current lap time 
-    int32_t iLastTime = 0; // Last lap time 
-    int32_t iBestTime = 0; // Best lap time 
-    float sessionTimeLeft = 0; // Time left until session is closed 
-    float distanceTraveled = 0; // Distance traveled during the instance 
-    int32_t isInPit = 0; // If player's car is stopped in the pit: 0 (false) or 1 (true) 
-    int32_t currentSectorIndex = 0; // Current sector index 
-    int32_t lastSectorTime = 0; // Last sector time 
-    int32_t numberOfLaps = 0; // Number of laps needed to close the session 
+    int32_t completedLaps; // Number of completed laps by the player 
+    int32_t position; // Current player position (standings) 
+    int32_t iCurrentTime; // Current lap time 
+    int32_t iLastTime; // Last lap time 
+    int32_t iBestTime; // Best lap time 
+    float sessionTimeLeft; // Time left until session is closed 
+    float distanceTraveled; // Distance traveled during the instance 
+    int32_t isInPit; // If player's car is stopped in the pit: 0 (false) or 1 (true) 
+    int32_t currentSectorIndex; // Current sector index 
+    int32_t lastSectorTime; // Last sector time 
+    int32_t numberOfLaps; // Number of laps needed to close the session 
     wchar_t tyreCompound[33]; // Current tyre compound 
-    float replayTimeMultiplier = 0; // Replay multiplier 
-    float normalizedCarPosition = 0; // Car position on the track's spline 
+    float replayTimeMultiplier; // Replay multiplier 
+    float normalizedCarPosition; // Car position on the track's spline 
     float carCoordinates[3]; // Car position on world coordinates [x, y, z] 
-    float penaltyTime = 0; // Time of penalty 
-    AC_FLAG_TYPE flag = AC_NO_FLAG;
+    float penaltyTime; // Time of penalty 
+    AC_FLAG_TYPE flag;
     /* Type of flag being shown: 
     
         AC_NO_FLAG 0 
@@ -222,12 +222,12 @@ struct SPageFileGraphic {
         AC_CHECKERED_FLAG 5 
         AC_PENALTY_FLAG 6 
     */
-    int32_t idealLineOn = 0; // If ideal line is enabled: 0 (false) or 1 (true) 
-    int32_t isInPitLane = 0; // If player's car is in the pitlane: 0 (false) or 1 (true) 
-    float surfaceGrip = 0; // Current grip of the track's surface 
-    int32_t mandatoryPitDone = 0; // Set to 1 if the player has done the mandatory pit 
-    float windSpeed = 0; // Speed of the wind on the current session 
-    float windDirection = 0; // Direction of the wind (0-359) on the current session 
+    int32_t idealLineOn; // If ideal line is enabled: 0 (false) or 1 (true) 
+    int32_t isInPitLane; // If player's car is in the pitlane: 0 (false) or 1 (true) 
+    float surfaceGrip; // Current grip of the track's surface 
+    int32_t mandatoryPitDone; // Set to 1 if the player has done the mandatory pit 
+    float windSpeed; // Speed of the wind on the current session 
+    float windDirection; // Direction of the wind (0-359) on the current session 
 };
 
 int connect();
