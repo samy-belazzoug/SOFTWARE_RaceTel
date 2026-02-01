@@ -9,9 +9,7 @@ static : acpmf_static
 #ifndef SH_ASSETTO_CORSA_H
 #define SH_ASSETTO_CORSA_H
 
-#define STATIC "Local/acpmf_static" 
-#define PHYSICS "Local/acpmf_physics"
-#define GRAPHICS "Local/acpmf_graphics"
+#define BUF_SIZE 256
 
 //AC FLAGS
 #define AC_OFF 0
@@ -38,12 +36,17 @@ static : acpmf_static
 
 #include <windows.h> // MapViewOfFile
 #include <stdint.h> // int32_t_t
-#include <float.h>
+#include <float.h> // float
+#include <tchar.h> // TCHAR
+
+TCHAR sh_static[] = TEXT("acpmf_static");
+TCHAR sh_physics[] = TEXT("acpmf_physics");
+TCHAR sh_graphics[] = TEXT("acpmf_graphics");
 
 // AC SPECIAL SPECIAL TYPES
-typedef int32_t AC_STATUS;
-typedef int32_t AC_SESSION_TYPE;
-typedef int32_t AC_FLAG_TYPE;
+typedef int32_t AC_STATUS; // Status of the instance
+typedef int32_t AC_SESSION_TYPE; // Session type
+typedef int32_t AC_FLAG_TYPE; // Type of flag being shown
 
 struct SPageFileStatic { //The following members are initialized when the instance starts and never changes until the instance is close
     wchar_t smVersion[15]; // Version of the Shared Memory structure
@@ -230,6 +233,10 @@ struct SPageFileGraphic {
     float windDirection; // Direction of the wind (0-359) on the current session 
 };
 
-int connect();
+class Mapping_AC {
+    public:
+        Mapping_AC(); // Constructor - Map to Assetto Corsa shared memory
+        ~Mapping_AC(); // Destructor - destroy map
+};
 
 #endif
