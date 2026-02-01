@@ -13,9 +13,37 @@ static : acpmf_static
 #define PHYSICS "Local/acpmf_physics"
 #define GRAPHICS "Local/acpmf_graphics"
 
+//AC FLAGS
+#define AC_OFF 0
+#define AC_REPLAY 1
+#define AC_LIVE 2
+#define AC_PAUSE 3
 
-#include <windows.h> //MapViewOfFile
+#define AC_UNKNOWN -1
+#define AC_PRACTICE 0
+#define AC_QUALIFY 1
+#define AC_RACE 2
+#define AC_HOTLAP 3
+#define AC_TIME_ATTACK 4
+#define AC_DRIFT 5
+#define AC_DRAG 6
+
+#define AC_NO_FLAG 0 
+#define AC_BLUE_FLAG 1 
+#define AC_YELLOW_FLAG 2 
+#define AC_BLACK_FLAG 3 
+#define AC_WHITE_FLAG 4 
+#define AC_CHECKERED_FLAG 5 
+#define AC_PENALTY_FLAG 6 
+
+#include <windows.h> // MapViewOfFile
+#include <basetsd.h> // INT32
 #include <float.h>
+
+// AC SPECIAL SPECIAL TYPES
+typedef INT32 AC_STATUS;
+typedef INT32 AC_SESSION_TYPE;
+typedef INT32 AC_FLAG_TYPE;
 
 struct SPageFileStatic { //The following members are initialized when the instance starts and never changes until the instance is close
     wchar_t smVersion[15]; // Version of the Shared Memory structure
