@@ -237,6 +237,8 @@ struct SPageFileGraphic {
 
 class Mapping_AC {
     public:
+        HANDLE sh_acpmf_static_mapping;
+        LPVOID sh_acpmf_static_view;
         Mapping_AC(); // Constructor - Map to Assetto Corsa shared memory
         ~Mapping_AC(); // Destructor - destroy map
 };
