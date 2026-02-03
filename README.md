@@ -1,4 +1,4 @@
-# PyTel : Car Telemetry Analysis tool
+# PyTel : Real time car telemetry analysis tool
 
 ## When passions meets work
 IT and Motorsport are my passions, so why not combining them into one project?
