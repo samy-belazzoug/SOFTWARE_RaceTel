@@ -1,10 +1,14 @@
-//DRiver for Assetto Corsa
+//Data of Assetto Corsa's shared memory
 
 /*PERSONAL NOTES : SHARED MEMORY FILE NAMES
 From https://www.assettocorsamods.net/threads/doc-shared-memory-reference.58/
 physics : acpmf_physics
 graphics : acpmf_graphics
 static : acpmf_static
+
+Also, the general structure of the driver is a bit inspired by 
+dcratliff19, who made a Assetto Corsa Shared Memory for Python Applications
+https://github.com/dcratliff19/AC-SimInfo-Docs-Markdown#
 */
 
 //------------------------------------------------------------------------------------------------------------
@@ -23,7 +27,6 @@ static : acpmf_static
 
 #ifndef SH_ASSETTO_CORSA_H
 #define SH_ASSETTO_CORSA_H
-#define BUF_SIZE 256
 
 
 //------------------------------------------------------------------------------------------------------------
