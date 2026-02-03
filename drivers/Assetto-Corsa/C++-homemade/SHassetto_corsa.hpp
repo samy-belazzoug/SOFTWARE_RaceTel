@@ -38,10 +38,12 @@ static : acpmf_static
 #include <stdint.h> // int32_t_t
 #include <float.h> // float
 #include <tchar.h> // TCHAR
+#include <stdlib.h> 
+#include <iostream>
 
-TCHAR sh_static[] = TEXT("acpmf_static");
-TCHAR sh_physics[] = TEXT("acpmf_physics");
-TCHAR sh_graphics[] = TEXT("acpmf_graphics");
+LPCWSTR sh_static = TEXT("acpmf_static");
+LPCWSTR sh_physics = TEXT("acpmf_physics");
+LPCWSTR sh_graphics = TEXT("acpmf_graphics");
 
 // AC SPECIAL SPECIAL TYPES
 typedef int32_t AC_STATUS; // Status of the instance
