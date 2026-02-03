@@ -7,7 +7,13 @@ graphics : acpmf_graphics
 static : acpmf_static
 */
 
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ INCLUDES   ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
 
+
+#include <stdint.h> // int32_t
+#include <float.h> // float
 
 
 //------------------------------------------------------------------------------------------------------------
@@ -15,21 +21,14 @@ static : acpmf_static
 //------------------------------------------------------------------------------------------------------------
 
 
-
-
-
 #ifndef SH_ASSETTO_CORSA_H
 #define SH_ASSETTO_CORSA_H
-
 #define BUF_SIZE 256
-
 
 
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ AC FLAGS ----------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
-
-
 
 
 #define AC_OFF 0
@@ -55,40 +54,19 @@ static : acpmf_static
 #define AC_PENALTY_FLAG 6 
 
 
-
-
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------ INCLUDES     ------------------------------------------------
+//------------------------------------------------ AC SPECIAL TYPES ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
 
 
-
-
-#include <windows.h> // MapViewOfFile
-#include <memoryapi.h>
-#include <stdint.h> // int32_t_t
-#include <float.h> // float
-#include <tchar.h> // TCHAR
-#include <stdlib.h> 
-#include <iostream>
-
-LPCWSTR sh_static = L"acpmf_static";
-LPCWSTR sh_physics = L"acpmf_physics";
-LPCWSTR sh_graphics = L"acpmf_graphics";
-
-// AC SPECIAL SPECIAL TYPES
 typedef int32_t AC_STATUS; // Status of the instance
 typedef int32_t AC_SESSION_TYPE; // Session type
 typedef int32_t AC_FLAG_TYPE; // Type of flag being shown
 
 
-
-
 //------------------------------------------------------------------------------------------------------------
-//------------------------------------------------ SPAGEFILES ------------------------------------------------
+//------------------------------------------------ SPAGEFILESTATIC ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
-
-
 
 
 struct SPageFileStatic { //The following members are initialized when the instance starts and never changes until the instance is close
@@ -109,8 +87,8 @@ struct SPageFileStatic { //The following members are initialized when the instan
     float suspensionMaxTravel[4]; // Max travel distance of each tyre [Front Left, Front Right, Rear Left, Rear Right]
     float tyreRadius[4]; // Radius of each tyre [Front Left, Front Right, Rear Left, Rear Right]
     float maxTurboBoost; // Max turbo boost value of the player's car
-    float deprecated_1; // Do not use it
-    float deprecated_2; // Do not use it
+    //float deprecated_1; // Do not use it
+    //float deprecated_2; // Do not use it
     int32_t penaltiesEnabled; // Cut penalties enabled: 1 (true) or 0 (false)
     float aidFuelRate; // Fuel consumption rate: 0 (no cons), 1 (normal), 2 (double cons), etc.
 
@@ -136,6 +114,12 @@ struct SPageFileStatic { //The following members are initialized when the instan
     int32_t PitWindowStart; // Pit window is open on Lap/Minute
     int32_t PitWindowEnd; // Pit window is closed on Lap/Minute
 };
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ SPAGEPHYSICS ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
 
 struct SPageFilePhysics {
     int32_t packetId; // Index of the shared memory's current step
@@ -215,6 +199,12 @@ struct SPageFilePhysics {
     float localVelocity[3]; // Vector for local velocity
 };
 
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ SPAGEFILEGRAPHICS ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
 struct SPageFileGraphic {
     int32_t packetId; //Index of the shared memory's current step 
     AC_STATUS status = AC_OFF; 
@@ -276,23 +266,5 @@ struct SPageFileGraphic {
     float windDirection; // Direction of the wind (0-359) on the current session 
 };
 
-
-
-
-//------------------------------------------------------------------------------------------------------------
-//------------------------------------------------ CLASSES ------------------------------------------------
-//------------------------------------------------------------------------------------------------------------
-
-
-
-
-class Mapping_AC {
-    public:
-        HANDLE sh_mapping;
-        LPVOID sh_view;
-        int Map_SH(LPCWSTR file_memory); // Map the file
-        int unMap_SH(LPCWSTR file_memory);
-        ~Mapping_AC(); // Destructor - destroy map
-};
 
 #endif
