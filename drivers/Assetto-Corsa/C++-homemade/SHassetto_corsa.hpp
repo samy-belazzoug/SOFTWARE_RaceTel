@@ -6,12 +6,32 @@ physics : acpmf_physics
 graphics : acpmf_graphics
 static : acpmf_static
 */
+
+
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ SYSTEM NAMES ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 #ifndef SH_ASSETTO_CORSA_H
 #define SH_ASSETTO_CORSA_H
 
 #define BUF_SIZE 256
 
-//AC FLAGS
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ AC FLAGS ----------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
+
+
 #define AC_OFF 0
 #define AC_REPLAY 1
 #define AC_LIVE 2
@@ -34,21 +54,42 @@ static : acpmf_static
 #define AC_CHECKERED_FLAG 5 
 #define AC_PENALTY_FLAG 6 
 
+
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ INCLUDES     ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
+
+
 #include <windows.h> // MapViewOfFile
+#include <memoryapi.h>
 #include <stdint.h> // int32_t_t
 #include <float.h> // float
 #include <tchar.h> // TCHAR
 #include <stdlib.h> 
 #include <iostream>
 
-LPCWSTR sh_static = TEXT("acpmf_static");
-LPCWSTR sh_physics = TEXT("acpmf_physics");
-LPCWSTR sh_graphics = TEXT("acpmf_graphics");
+LPCWSTR sh_static = L"acpmf_static";
+LPCWSTR sh_physics = L"acpmf_physics";
+LPCWSTR sh_graphics = L"acpmf_graphics";
 
 // AC SPECIAL SPECIAL TYPES
 typedef int32_t AC_STATUS; // Status of the instance
 typedef int32_t AC_SESSION_TYPE; // Session type
 typedef int32_t AC_FLAG_TYPE; // Type of flag being shown
+
+
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ SPAGEFILES ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
+
 
 struct SPageFileStatic { //The following members are initialized when the instance starts and never changes until the instance is close
     wchar_t smVersion[15]; // Version of the Shared Memory structure
@@ -235,11 +276,22 @@ struct SPageFileGraphic {
     float windDirection; // Direction of the wind (0-359) on the current session 
 };
 
+
+
+
+//------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ CLASSES ------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
+
+
+
 class Mapping_AC {
     public:
-        HANDLE sh_acpmf_static_mapping;
-        LPVOID sh_acpmf_static_view;
-        Mapping_AC(); // Constructor - Map to Assetto Corsa shared memory
+        HANDLE sh_mapping;
+        LPVOID sh_view;
+        int Map_SH(LPCWSTR file_memory); // Map the file
+        int unMap_SH(LPCWSTR file_memory);
         ~Mapping_AC(); // Destructor - destroy map
 };
 
