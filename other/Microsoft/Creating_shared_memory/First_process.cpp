@@ -2,10 +2,18 @@
 #include <stdio.h>
 #include <conio.h>
 #include <tchar.h>
+#include <stdint.h> // int32_t
+#include <float.h> // float
+#include <iostream>
 
 #define BUF_SIZE 256
 TCHAR szName[]=TEXT("Global\\MyFileMappingObject");
 TCHAR szMsg[]=TEXT("Message from first process.");
+
+struct s_example {
+   int32_t x;
+   wchar_t y[33];
+};
 
 int _tmain()
 {
@@ -42,13 +50,21 @@ int _tmain()
       return 1;
    }
 
-
-   CopyMemory((PVOID)pBuf, szMsg, (_tcslen(szMsg) * sizeof(TCHAR)));
-    _getch();
-
+   struct s_example* my_point = (struct s_example*)pBuf;
+   my_point->x = 150;
+   wcscpy_s(my_point->y, 33, L"Hello, memory");
+   
+   int i;
+   while (1) {
+      std::cin >> i;
+      if (i == 1) {
+         break;
+      }
+   };
+   
    UnmapViewOfFile(pBuf);
 
    CloseHandle(hMapFile);
-   
+   printf("Closed successfully");
    return 0;
 }

@@ -2,10 +2,19 @@
 #include <stdio.h>
 #include <conio.h>
 #include <tchar.h>
+#include <stdint.h> // int32_t
+#include <float.h> // float
+
 #pragma comment(lib, "user32.lib")
 
 #define BUF_SIZE 256
 TCHAR szName[]=TEXT("Global\\MyFileMappingObject");
+
+struct s_example {
+   int32_t x;
+   wchar_t y[33];
+};
+
 
 int _tmain()
 {
@@ -30,7 +39,7 @@ int _tmain()
                0,
                BUF_SIZE);
 
-   if (pBuf == NULL)
+  if (pBuf == NULL)
    {
       _tprintf(TEXT("Could not map view of file (%d).\n"),
              GetLastError());
@@ -40,7 +49,10 @@ int _tmain()
       return 1;
    }
 
-   MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
+   //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
+   struct s_example* mon_pointeur = (struct s_example*)pBuf;
+   printf("%d\n", mon_pointeur->x);
+   wprintf(L"%s\n", mon_pointeur->y);
 
    UnmapViewOfFile(pBuf);
 
