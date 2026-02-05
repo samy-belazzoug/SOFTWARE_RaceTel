@@ -19,14 +19,13 @@ https://github.com/dcratliff19/AC-SimInfo-Docs-Markdown#
 #include <stdint.h> // int32_t
 #include <float.h> // float
 
-
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ SYSTEM NAMES ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
 
 
-#ifndef SH_ASSETTO_CORSA_H
-#define SH_ASSETTO_CORSA_H
+#ifndef DATA_ASSETTO_CORSA_H
+#define DATA_ASSETTO_CORSA_H
 
 
 //------------------------------------------------------------------------------------------------------------
@@ -90,8 +89,8 @@ struct SPageFileStatic { //The following members are initialized when the instan
     float suspensionMaxTravel[4]; // Max travel distance of each tyre [Front Left, Front Right, Rear Left, Rear Right]
     float tyreRadius[4]; // Radius of each tyre [Front Left, Front Right, Rear Left, Rear Right]
     float maxTurboBoost; // Max turbo boost value of the player's car
-    //float deprecated_1; // Do not use it
-    //float deprecated_2; // Do not use it
+    float deprecated_1; // Do not use it
+    float deprecated_2; // Do not use it
     int32_t penaltiesEnabled; // Cut penalties enabled: 1 (true) or 0 (false)
     float aidFuelRate; // Fuel consumption rate: 0 (no cons), 1 (normal), 2 (double cons), etc.
 
@@ -177,16 +176,16 @@ struct SPageFilePhysics {
     float finalFF; // Current Force Feedback value; 
     float performanceMeter; // Performance meter compared to the best lap 
     int32_t engineBrake; // Engine brake setting 
-    int32_t ersRecoveryLevel;  // ERS recovery level 
-    int32_t ersPowerLevel;  // ERS selected power controller 
-    int32_t ersHeatCharging;  // ERS changing: 0 (Motor) or 1 (Battery) 
+    int32_t ersRecoveryLevel; // ERS recovery level 
+    int32_t ersPowerLevel; // ERS selected power controller 
+    int32_t ersHeatCharging; // ERS changing: 0 (Motor) or 1 (Battery) 
     int32_t ersIsCharging; // If ERS battery is recharging: 0 (false) or 1 (true) 
-    float kersCurrentKJ;  // KERS/ERS KiloJoule spent during the lap 
-    int32_t drsAvailable;  // If DRS is available (DRS zone): 0 (false) or 1 (true) 
+    float kersCurrentKJ; // KERS/ERS KiloJoule spent during the lap 
+    int32_t drsAvailable; // If DRS is available (DRS zone): 0 (false) or 1 (true) 
     int32_t drsEnabled;  // If DRS is enabled: 0 (false) or 1 (true) 
-    float brakeTemp[4];  /* Brake temp for each tire 
+    float brakeTemp[4]; /* Brake temp for each tire 
     [Front Left, Front Right, Rear Left, Rear Right]*/
-    float clutch;  // Value of clutch pedal: 0 to 1 (fully pressed) 
+    float clutch; // Value of clutch pedal: 0 to 1 (fully pressed) 
     float tyreTempI[4];  /* Inner temperature of each tyre 
     [Front Left, Front Right, Rear Left, Rear Right]*/
     float tyreTempM[4]; /* Middle temperature of each tyre 
