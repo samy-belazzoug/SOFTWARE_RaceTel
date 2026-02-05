@@ -26,19 +26,22 @@ class SHME_assetto_corsa {
         void Disconnect();
 };
 
-class SHME_static : SHME_assetto_corsa {
+class SHME_static : public SHME_assetto_corsa {
     public:
-        struct SPageFileStatic Connect();
+        struct SPageFileStatic* statics = (struct SPageFileStatic*)pBuf;
+        int Connect();
 };
 
-class SHME_physics : SHME_assetto_corsa {
+class SHME_physics : public SHME_assetto_corsa {
     public:
-        struct SPageFilePhysics Connect();
+        struct SPageFilePhysics* physics = (struct SPageFilePhysics*)pBuf;
+        int Connect();
 };
 
-class SHME_graphics : SHME_assetto_corsa {
-    public:
-        struct SPageFileGraphics Connect();
+class SHME_graphics : public SHME_assetto_corsa {
+    public: 
+        struct SPageFileGraphics* graphics = (struct SPageFileGraphics*)pBuf;
+        int Connect();
 };
 
 

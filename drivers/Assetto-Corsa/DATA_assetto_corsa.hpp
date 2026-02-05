@@ -17,7 +17,8 @@ https://github.com/dcratliff19/AC-SimInfo-Docs-Markdown#
 
 
 #include <stdint.h> // int32_t
-#include <float.h> // float
+#include <float.h> // float*
+
 
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ SYSTEM NAMES ------------------------------------------------
@@ -93,7 +94,6 @@ struct SPageFileStatic { //The following members are initialized when the instan
     float deprecated_2; // Do not use it
     int32_t penaltiesEnabled; // Cut penalties enabled: 1 (true) or 0 (false)
     float aidFuelRate; // Fuel consumption rate: 0 (no cons), 1 (normal), 2 (double cons), etc.
-
     float aidTireRate; // Tire wear rate: 0 (no wear), 1 (normal), 2 (double wear) etc.
     float aidMechanicalDamage; // Damage rate: 0 (no damage) to 1 (normal)
     int32_t aidAllowTyreBlankets; // Player starts with hot (optimal temp) tyres: 1 (true) or 0 (false)
