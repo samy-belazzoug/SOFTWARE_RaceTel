@@ -18,7 +18,7 @@
 class SHME_assetto_corsa {
     protected:
         HANDLE handle;
-        TCHAR pBuf;
+        LPCTSTR pBuf;
         /* data */
     public:
         void Disconnect();
