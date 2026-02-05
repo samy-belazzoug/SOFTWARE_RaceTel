@@ -7,20 +7,37 @@
 //------------------------------------------------ INCLUDES   ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
 
-#include <windows.h>
+#include "DATA_assetto_corsa.hpp"
+#include <windows.h> // OpenFileMapping()
+#include <iostream> // cout
 
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ CLASSES   ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
 
-class SHME_assetto_corsa { 
-    private:
+class SHME_assetto_corsa {
+    protected:
+        HANDLE handle;
+        TCHAR pBuf;
         /* data */
     public:
-        HANDLE handle;
-        LPCTSTR pBuf;
-        SHME_assetto_corsa(TCHAR shme_file[]); // Connects to shme_file shared memory
-        ~SHME_assetto_corsa(); // Disconnect to shme_file shared memory
-    };
+        void Disconnect();
+};
+
+class SHME_static : SHME_assetto_corsa {
+    public:
+        struct SPageFileStatic Connect();
+};
+
+class SHME_physics : SHME_assetto_corsa {
+    public:
+        struct SPageFilePhysics Connect();
+};
+
+class SHME_graphics : SHME_assetto_corsa {
+    public:
+        struct SPageFileGraphics Connect();
+};
+
 
 #endif
