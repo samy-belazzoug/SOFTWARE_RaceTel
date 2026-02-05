@@ -9,7 +9,9 @@ int main() {
     SHME_static b;
     
     b.Connect();
+    std::wcout << b.statics->acVersion << std::endl;
     std::wcout << b.statics->track << std::endl;
+    std::wcout << b.statics->carModel << std::endl;
     std::cout << b.statics->maxRPM << std::endl;
     std::cout << b.statics->maxFuel << std::endl;
     b.Disconnect();
@@ -58,6 +60,7 @@ void SHME_assetto_corsa::Disconnect() {
         CloseHandle(handle);
         std::cout << "Handle closed successfully." << std::endl;
     }
+    isConnected = false;
     return;
 };
 
@@ -97,6 +100,7 @@ int SHME_static::Connect() {
    //printf("%d\n", mon_pointeur->x);
    //wprintf(L"%s\n", mon_pointeur->y);
 
+   isConnected = true;
    return 0;
 }
 
@@ -106,6 +110,39 @@ int SHME_static::Connect() {
 //------------------------------------------------------------------------------------------------------------
 
 
+int SHME_physics::Connect() {
+    TCHAR shmefi_physics[] = TEXT("Local\\acpmf_physics"); // SHared MEmory FIle STATIC
+    handle = OpenFileMapping(
+                   FILE_MAP_ALL_ACCESS,   // read/write access
+                   FALSE,                 // do not inherit the name
+                   shmefi_physics);               // name of mapping object
+
+   if (handle== NULL) {
+        std::cout << "Couldn't open file mapping : " << GetLastError() << std::endl;
+
+        return 1;
+   }
+
+   pBuf = (LPTSTR) MapViewOfFile(handle, // handle to map object
+               FILE_MAP_ALL_ACCESS,  // read/write permission
+               0,
+               0,
+               0);
+
+  if (pBuf == NULL) {
+        std::cout << "Couldn't map view static file : " << GetLastError() << std::endl;
+        CloseHandle(handle);
+        return 1;
+   }
+
+   //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
+   physics = (struct SPageFilePhysics*)pBuf;
+   //printf("%d\n", mon_pointeur->x);
+   //wprintf(L"%s\n", mon_pointeur->y);
+
+   isConnected = true;
+   return 0;
+}
 
 
 //------------------------------------------------------------------------------------------------------------
