@@ -40,7 +40,7 @@ class SHME_physics : public SHME_assetto_corsa {
 
 class SHME_graphics : public SHME_assetto_corsa {
     public: 
-        struct SPageFileGraphics* graphics = (struct SPageFileGraphics*)pBuf;
+        struct SPageFileGraphic* graphics = (struct SPageFileGraphic*)pBuf;
         int Connect();
 };
 

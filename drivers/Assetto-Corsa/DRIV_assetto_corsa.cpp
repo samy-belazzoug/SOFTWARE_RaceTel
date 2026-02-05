@@ -16,11 +16,19 @@ int main() {
     std::cout << b.statics->maxFuel << std::endl;
     b.Disconnect();
     
-    //SHME_physics *c;
-    //c->Disconnect();
 
-    //SHME_graphics *d;
-    //d->Disconnect();
+    SHME_physics c;
+
+    c.Connect();
+    std::cout << c.physics->brakeBias << std::endl;
+    std::cout << c.physics->fuel << std::endl;
+    c.Disconnect();
+
+    SHME_graphics d;
+    d.Connect();
+    std::wcout << d.graphics->bestTime << std::endl;
+    d.Disconnect();
+    
 
     return 0;
 }
@@ -149,4 +157,36 @@ int SHME_physics::Connect() {
 //------------------------------------------------ GRAPHICS ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
 
+int SHME_graphics::Connect() {
+    TCHAR shmefi_graphics[] = TEXT("Local\\acpmf_graphics"); // SHared MEmory FIle STATIC
+    handle = OpenFileMapping(
+                   FILE_MAP_ALL_ACCESS,   // read/write access
+                   FALSE,                 // do not inherit the name
+                   shmefi_graphics);               // name of mapping object
 
+   if (handle== NULL) {
+        std::cout << "Couldn't open file mapping : " << GetLastError() << std::endl;
+
+        return 1;
+   }
+
+   pBuf = (LPTSTR) MapViewOfFile(handle, // handle to map object
+               FILE_MAP_ALL_ACCESS,  // read/write permission
+               0,
+               0,
+               0);
+
+  if (pBuf == NULL) {
+        std::cout << "Couldn't map view static file : " << GetLastError() << std::endl;
+        CloseHandle(handle);
+        return 1;
+   }
+
+   //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
+   graphics = (struct SPageFileGraphic*)pBuf;
+   //printf("%d\n", mon_pointeur->x);
+   //wprintf(L"%s\n", mon_pointeur->y);
+
+   isConnected = true;
+   return 0;
+}
