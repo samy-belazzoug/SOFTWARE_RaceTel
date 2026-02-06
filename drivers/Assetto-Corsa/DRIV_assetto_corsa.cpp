@@ -2,36 +2,6 @@
 #include "SHME_assetto_corsa.hpp"
 #include "DATA_assetto_corsa.hpp"
 
-int main() {
-    //SHME_assetto_corsa *a;
-    //a->Disconnect();
-    
-    SHME_static b;
-    
-    b.Connect();
-    std::wcout << b.statics->acVersion << std::endl;
-    std::wcout << b.statics->track << std::endl;
-    std::wcout << b.statics->carModel << std::endl;
-    std::cout << b.statics->maxRPM << std::endl;
-    std::cout << b.statics->maxFuel << std::endl;
-    b.Disconnect();
-    
-
-    SHME_physics c;
-
-    c.Connect();
-    std::cout << c.physics->brakeBias << std::endl;
-    std::cout << c.physics->fuel << std::endl;
-    c.Disconnect();
-
-    SHME_graphics d;
-    d.Connect();
-    std::wcout << d.graphics->bestTime << std::endl;
-    d.Disconnect();
-    
-
-    return 0;
-}
 
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ GENERAL ------------------------------------------------
@@ -91,6 +61,7 @@ int SHME_static::Connect() {
         return 1;
    }
 
+
    pBuf = (LPTSTR) MapViewOfFile(handle, // handle to map object
                FILE_MAP_ALL_ACCESS,  // read/write permission
                0,
@@ -103,10 +74,7 @@ int SHME_static::Connect() {
         return 1;
    }
 
-   //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
    statics = (struct SPageFileStatic*)pBuf;
-   //printf("%d\n", mon_pointeur->x);
-   //wprintf(L"%s\n", mon_pointeur->y);
 
    isConnected = true;
    return 0;
@@ -143,10 +111,7 @@ int SHME_physics::Connect() {
         return 1;
    }
 
-   //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
    physics = (struct SPageFilePhysics*)pBuf;
-   //printf("%d\n", mon_pointeur->x);
-   //wprintf(L"%s\n", mon_pointeur->y);
 
    isConnected = true;
    return 0;
@@ -156,6 +121,7 @@ int SHME_physics::Connect() {
 //------------------------------------------------------------------------------------------------------------
 //------------------------------------------------ GRAPHICS ------------------------------------------------
 //------------------------------------------------------------------------------------------------------------
+
 
 int SHME_graphics::Connect() {
     TCHAR shmefi_graphics[] = TEXT("Local\\acpmf_graphics"); // SHared MEmory FIle STATIC
@@ -182,10 +148,7 @@ int SHME_graphics::Connect() {
         return 1;
    }
 
-   //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
    graphics = (struct SPageFileGraphic*)pBuf;
-   //printf("%d\n", mon_pointeur->x);
-   //wprintf(L"%s\n", mon_pointeur->y);
 
    isConnected = true;
    return 0;

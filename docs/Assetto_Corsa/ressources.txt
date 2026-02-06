@@ -19,3 +19,9 @@ https://github.com/epezent/implot
 
 https://stackoverflow.com/questions/72161247/shared-memory-c-cross-platform
 -->Cross platform C shared memory platform. I'll have to do it myself
+
+https://www.reddit.com/r/cpp/comments/8bmkk1/should_my_classesstructs_have_default_constructors/
+-->Is it mandatory to have a constructor in a cpp class ? (no)
+
+https://stackoverflow.com/questions/5844584/class-inheritance-function-is-inaccessible
+-->Class inheritance: Function is inaccessible error
