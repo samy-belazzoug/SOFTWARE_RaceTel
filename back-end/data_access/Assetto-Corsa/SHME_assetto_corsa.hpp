@@ -19,10 +19,10 @@ class SHME_assetto_corsa {
     protected:
         HANDLE handle;
         LPCTSTR pBuf;
-        bool isConnected;
         /* data */
     public:
         SHME_assetto_corsa();
+        bool isConnected();
         void Disconnect();
 };
 

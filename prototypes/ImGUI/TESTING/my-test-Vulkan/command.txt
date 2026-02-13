@@ -1,0 +1,1 @@
+g++ -I"C:\VulkanSDK\1.4.341.1\Include" -Iinclude main.cpp include/*.cpp -o test -L"C:\VulkanSDK\1.4.341.1\Lib" -lvulkan-1 -luser32 -lgdi32 -ldwmapi

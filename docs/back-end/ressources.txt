@@ -1,0 +1,5 @@
+https://www.reddit.com/r/learnpython/comments/qk0cx2/what_is_the_difference_between_multithreading/
+--> Difference between multithreading and multiprocessing
+
+https://www.boost.org/doc/libs/latest/doc/html/circular_buffer.html
+--> About circular buffer

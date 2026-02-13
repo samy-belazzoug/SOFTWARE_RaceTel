@@ -11,34 +11,26 @@
 SHME_assetto_corsa::SHME_assetto_corsa() {
     pBuf = NULL;
     handle = NULL;
-    isConnected = false;
+}
+
+bool SHME_assetto_corsa::isConnected() {
+    return (pBuf == NULL || handle == NULL) ? false : true;
 }
 
 void SHME_assetto_corsa::Disconnect() {
     // pBuf
-    if (isConnected == false) {
+    if (isConnected() == false) {
         std::cout << "You should connect to map via Connect()." << std::endl;
         return;
     }
-    if (pBuf == NULL) {
-        std::cout << "No need to unmap pBuf." << std::endl;
-        return;
-    }
+    
     else {
         UnmapViewOfFile(pBuf);
         std::cout << "View unmapped successfully" << std::endl;
-        return;
-    }
     
-    // handle
-    if (handle == NULL) {
-        std::cout << "No need to close handle." << std::endl;
-    }
-    else {
         CloseHandle(handle);
         std::cout << "Handle closed successfully." << std::endl;
     }
-    isConnected = false;
     return;
 };
 
@@ -76,7 +68,6 @@ int SHME_static::Connect() {
 
    statics = (struct SPageFileStatic*)pBuf;
 
-   isConnected = true;
    return 0;
 }
 
@@ -113,7 +104,6 @@ int SHME_physics::Connect() {
 
    physics = (struct SPageFilePhysics*)pBuf;
 
-   isConnected = true;
    return 0;
 }
 
@@ -150,6 +140,5 @@ int SHME_graphics::Connect() {
 
    graphics = (struct SPageFileGraphic*)pBuf;
 
-   isConnected = true;
    return 0;
 }

@@ -1,0 +1,1 @@
+g++ -Iinclude main.cpp include/*.cpp -o test -ld3d11 -ld3dcompiler -ldxgi -ldwmapi -lgdi32
