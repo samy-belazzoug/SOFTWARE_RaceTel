@@ -7,15 +7,7 @@ int main() {
     p.Connect(); 
     g.Connect(); 
 
-    Circular_Buffer buffer;
-    buffer.frequency = 150;
-    buffer.item_size = sizeof(SPageFilePhysics);
-    buffer.seconds = 5;
-    std::cout << "Buffer size = " << buffer.item_size * buffer.frequency * buffer.seconds << std::endl;
-
-    std::cout << &p.physics << std::endl;
-
-
+    std::cout << sizeof(SPageFilePhysics) * 150 * 5 << std::endl;
 
     while (g.graphics->status != AC_OFF) { // Assetto Corsa is launched
         if (g.graphics->status == AC_LIVE) { // Player is currently driving
@@ -26,6 +18,7 @@ int main() {
     // The user leave Assetto Corsa
     p.Disconnect();
     g.Disconnect();
+    
     
     return 0;
 }
