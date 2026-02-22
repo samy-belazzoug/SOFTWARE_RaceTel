@@ -10,7 +10,7 @@ As major tools were mainly developped for real life, I will try to do the opposi
 
 Note : It can change in the future, but this is will be approximately :
 Back-end : Python, C++, C
-Front-end : ImGUI (C++), ImPlot + DirectX11 
+Front-end : QT 6
 
 ## My goals
 Of course, my goal is not to be a direct rival of MoTec I2, Cosworth PI and so on. 
@@ -18,7 +18,7 @@ I don't even think can all alone. I just want to show my abilities in :
 
 -Reverse engineering
 
-- High frequency, data engineering.
+-High frequency, data engineering.
 
 -Understanding of motorsport / cars
 
